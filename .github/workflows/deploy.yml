@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # 只在main分支更新时触发
+  workflow_dispatch:  # 允许手动触发
 
 # 设置并发控制
 concurrency:
