@@ -3,33 +3,27 @@ name: Deploy Personal Tech Card
 on:
   push:
     branches:
-      - main  # 只在main分支更新时触发
+      - main
+
+# 设置并发组，确保同一时间只有一个部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  # 构建任务
+  build:
     runs-on: ubuntu-latest
-    
-    # 为GitHub Pages设置权限
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    
-    # 指定部署环境
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
       
-      - name: Generate HTML file
+      - name: Generate HTML
         run: python build_page.py
       
       - name: Setup Pages
@@ -38,8 +32,19 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # 上传整个目录，GitHub Pages会找到index.html
-      
+          path: '.'
+  
+  # 部署任务
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
