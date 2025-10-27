@@ -1,28 +1,12 @@
-name: Deploy Personal Tech Card
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:  # 允许手动触发
-
-# 设置工作流级别的权限
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# 设置并发组
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
-  # 构建和部署合并为一个job
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     
     steps:
@@ -37,14 +21,9 @@ jobs:
       - name: Generate HTML
         run: python build_page.py
       
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-      
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
