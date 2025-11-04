@@ -1,17 +1,16 @@
 def main():
     # 个人信息配置
     personal_info = {
-        "name": "张三",
-        "title": "AI Engineer",
-        "description": "AI Engineer passionate about MLOps and automation.",
-        "skills": ["Python", "TensorFlow", "Git", "CI/CD", "Docker"],
+        "name": "马悦",
+        "title": "北京化工大学计算机科学与技术学士学位，德国xu指数应用大学数据科学硕士在读",
+        "description": "多个项目经验，曾任计算机视觉领域的专利设计师和ai大模型评测员",
+        "skills": ["Python", "Java", "C++"],
         "projects": [
-            {"name": "项目一", "url": "https://github.com/yourusername/project1"},
-            {"name": "项目二", "url": "https://github.com/yourusername/project2"}
+            {"name": "GitHub主页", "url": "https://github.com/nikk909"}
         ],
         "contact": {
-            "github": "https://github.com/yourusername",
-            "linkedin": "https://linkedin.com/in/yourprofile"
+            "email": "yinghua253659@163.com",
+            "github": "https://github.com/nikk909"
         }
     }
     
@@ -104,8 +103,8 @@ def main():
             <h2>联系方式</h2>
             <div class="contact">
                 <p>
-                    <a href="{personal_info['contact']['github']}" target="_blank">GitHub</a> |
-                    <a href="{personal_info['contact']['linkedin']}" target="_blank">LinkedIn</a>
+                    <a href="mailto:{personal_info['contact']['email']}">{personal_info['contact']['email']}</a> |
+                    <a href="{personal_info['contact']['github']}" target="_blank">GitHub</a>
                 </p>
             </div>
         </div>
@@ -122,4 +121,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
