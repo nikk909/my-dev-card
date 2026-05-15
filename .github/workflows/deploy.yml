@@ -20,14 +20,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: '.'  # 直接部署现有的index.html文件，不运行build_page.py
+          path: '.'
   
   deploy:
     environment:

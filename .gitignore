@@ -205,3 +205,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Large / local-only assets (do not push — GitHub 100 MB limit)
+/Yue Ma_Chinese subs.mp4
+/yuema_resume.docx

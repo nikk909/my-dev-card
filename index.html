@@ -87,6 +87,37 @@
             box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
         }
         
+        .project-details.hidden {
+            display: none !important;
+        }
+        
+        .project-chevron-rotated {
+            transform: rotate(180deg);
+        }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .timeline-connector {
+            position: relative;
+        }
+        
+        .timeline-connector::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary-color), rgba(22, 93, 255, 0.2));
+            border-radius: 1px;
+        }
+        
         .contact-link {
             position: relative;
             transition: color 0.3s ease;
@@ -208,16 +239,10 @@
             <!-- Skills Section -->
             <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-5 lg:p-6 content-card fade-in-delay-2">
                 <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3 section-title" id="i18n-skills-title">Skills</h2>
-                <div class="flex flex-wrap gap-2.5 sm:gap-3">
-                    <span class="skill-tag inline-block px-4 py-2 bg-[#165DFF] text-white rounded-full font-medium text-sm sm:text-base shadow-md">
-                        Python
-                    </span>
-                    <span class="skill-tag inline-block px-4 py-2 bg-[#165DFF] text-white rounded-full font-medium text-sm sm:text-base shadow-md">
-                        Java
-                    </span>
-                    <span class="skill-tag inline-block px-4 py-2 bg-[#165DFF] text-white rounded-full font-medium text-sm sm:text-base shadow-md">
-                        C++
-                    </span>
+                <div class="flex flex-wrap gap-2.5 sm:gap-3" id="skills-container">
+                    <span class="skill-tag inline-block px-4 py-2 bg-[#165DFF] text-white rounded-full font-medium text-sm sm:text-base shadow-md">Python</span>
+                    <span class="skill-tag inline-block px-4 py-2 bg-[#165DFF] text-white rounded-full font-medium text-sm sm:text-base shadow-md">Java</span>
+                    <span class="skill-tag inline-block px-4 py-2 bg-[#165DFF] text-white rounded-full font-medium text-sm sm:text-base shadow-md">C++</span>
                 </div>
             </div>
         </div>
@@ -225,7 +250,7 @@
         <!-- Projects Section -->
         <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-5 lg:p-6 mb-4 content-card fade-in-delay-3">
             <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 section-title" id="i18n-projects-title">Project Experience</h2>
-            <div>
+            <div class="timeline-connector pl-2 space-y-4" id="projects-container">
                 <a href="https://github.com/nikk909" target="_blank" class="project-card block bg-gradient-to-r from-[#165DFF] to-[#4080FF] rounded-xl p-4 sm:p-5 text-white hover:from-[#0E42D2] hover:to-[#165DFF]">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3 sm:gap-4">
@@ -233,13 +258,25 @@
                                 <i class="fab fa-github text-xl sm:text-2xl"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg sm:text-xl font-semibold mb-1" id="i18n-project-github">GitHub Homepage</h3>
+                                <h3 class="text-lg sm:text-xl font-semibold mb-1" id="i18n-project-github-title">GitHub Homepage</h3>
                                 <p class="text-white/80 text-xs sm:text-sm" id="i18n-project-github-desc">View my code repositories and projects</p>
                             </div>
                         </div>
-                        <i class="fas fa-arrow-right text-lg sm:text-xl transition-transform group-hover:translate-x-1"></i>
+                        <i class="fas fa-arrow-right text-lg sm:text-xl"></i>
                     </div>
                 </a>
+            </div>
+        </div>
+
+        <!-- Portfolio / Video Section -->
+        <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-5 lg:p-6 mb-4 content-card fade-in-delay-3">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 section-title" id="i18n-portfolio-title">Portfolio</h2>
+            <div class="video-wrapper rounded-xl overflow-hidden bg-gray-100">
+                <video class="w-full max-w-2xl mx-auto" controls preload="metadata">
+                    <source src="Yue%20Ma_Chinese%20subs.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="text-gray-600 text-sm mt-2" id="i18n-portfolio-desc">University Promotion Video / 大学宣传视频</p>
             </div>
         </div>
 
@@ -247,9 +284,9 @@
         <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-5 lg:p-6 content-card fade-in-delay-3">
             <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 section-title" id="i18n-contact-title">Contact</h2>
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                <a href="mailto:yinghua253659@163.com" class="contact-link flex items-center gap-2.5 sm:gap-3 text-base sm:text-lg text-gray-700 font-medium">
+                <a href="mailto:y.ma@student.xu-university.de" class="contact-link flex items-center gap-2.5 sm:gap-3 text-base sm:text-lg text-gray-700 font-medium">
                     <i class="fas fa-envelope text-[#165DFF] text-lg sm:text-xl"></i>
-                    <span>yinghua253659@163.com</span>
+                    <span>y.ma@student.xu-university.de</span>
                 </a>
                 <a href="https://github.com/nikk909" target="_blank" class="contact-link flex items-center gap-2.5 sm:gap-3 text-base sm:text-lg text-gray-700 font-medium">
                     <i class="fab fa-github text-[#165DFF] text-lg sm:text-xl"></i>
@@ -269,6 +306,8 @@
                 experience: "多个项目经验，曾任计算机视觉领域的专利设计师和AI大模型评测员",
                 skillsTitle: "技能",
                 projectsTitle: "项目经历",
+                portfolioTitle: "作品展示",
+                portfolioDesc: "大学宣传视频",
                 projectGithub: "GitHub主页",
                 projectGithubDesc: "查看我的代码仓库和项目",
                 contactTitle: "联系方式"
@@ -280,6 +319,8 @@
                 experience: "Mehrere Projekterfahrungen, ehemaliger Patentdesigner im Bereich Computer Vision und KI-Großmodell-Bewerter",
                 skillsTitle: "Fähigkeiten",
                 projectsTitle: "Projekterfahrung",
+                portfolioTitle: "Portfolio",
+                portfolioDesc: "Universitäts-Werbevideo",
                 projectGithub: "GitHub-Hauptseite",
                 projectGithubDesc: "Sehen Sie sich meine Code-Repositories und Projekte an",
                 contactTitle: "Kontakt"
@@ -291,15 +332,17 @@
                 experience: "Multiple project experiences, former patent designer in computer vision and AI Large Model Evaluator",
                 skillsTitle: "Skills",
                 projectsTitle: "Project Experience",
+                portfolioTitle: "Portfolio",
+                portfolioDesc: "University Promotion Video",
                 projectGithub: "GitHub Homepage",
                 projectGithubDesc: "View my code repositories and projects",
                 contactTitle: "Contact"
             }
         };
 
-        let currentLang = 'en'; // Default to English
+        let currentLang = 'en';
 
-        // SIMPLE AND DIRECT LANGUAGE SWITCH FUNCTION
+        // Language switch
         function switchLanguage(lang) {
             if (!translations[lang]) {
                 console.error('Invalid language:', lang);
@@ -325,8 +368,10 @@
                 'i18n-experience': translations[lang].experience,
                 'i18n-skills-title': translations[lang].skillsTitle,
                 'i18n-projects-title': translations[lang].projectsTitle,
-                'i18n-project-github': translations[lang].projectGithub,
+                'i18n-project-github-title': translations[lang].projectGithub,
                 'i18n-project-github-desc': translations[lang].projectGithubDesc,
+                'i18n-portfolio-title': translations[lang].portfolioTitle,
+                'i18n-portfolio-desc': translations[lang].portfolioDesc,
                 'i18n-contact-title': translations[lang].contactTitle
             };
             
@@ -349,10 +394,7 @@
         
         // Initialize page
         function initPage() {
-            // Set language to English by default
             switchLanguage('en');
-            
-            // Initialize animations
             setTimeout(() => {
                 document.querySelectorAll('.fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3').forEach(el => {
                     el.style.opacity = '1';
